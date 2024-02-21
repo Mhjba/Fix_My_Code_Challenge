@@ -1,23 +1,20 @@
-#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "lists.h"
 
 /**
- * print_dlistint - Prints a doubly linkedlist of integers
+ * free_dlistint - Free a list
  *
- * @h: A pointer to the first element of a list
- *
- * Return: The number of element printed
+ * @head: A pointer to the first element of the list
  */
-size_t print_dlistint(const dlistint_t *h)
+void free_dlistint(dlistint_t *head)
 {
-	size_t n;
+	dlistint_t *node;
 
-	n = 0;
-	while (h)
+	while (head)
 	{
-		printf("%d\n", h->n);
-		h = h->next;
-		n++;
+		node = head;
+		head = head->next;
+		free(node);
 	}
-	return (n);
 }
